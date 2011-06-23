@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.js"></script>
+        <script type="text/javascript" src="../src/jquery.youtube.1.js"></script>
+        <link rel="stylesheet" href="../src/jquery.youtube.1.css"/>
+	<style>
+#player {
+    width: 348px;
+    height: 240px;
+    overflow: hidden;
+    background: gray;
+    position: absolute;
+    border: solid 2px gray;
+    clear: both;
+}
+	</style>
+        <script>
+           $(function() {
+             $('#player').youTubeChannel({user:'youtube'});
+           });
+        </script>
+    </head>
+    <body>
+	<p>Here is a player for YouTube's own channel. This player is completely HTML + YouTube own IFRAME based embedding system, that will use HTML5 video on iPad, iPhone and other system that does not support Flash</p>
+        <p>You can customize the appearance quite easily, via CSS. Moreover, you can supply custom functions on options :
+          <ul>
+            <li>carousel: function($maindiv, videos, options) - creates the "carousel" of videos in the channel, the default function calls "thumbnail" for each video.</li>
+            <li>thumbnail: function($carouseldiv, video, options) - creates a thumbnail for a specific video, the default function creates an img pointing to the first available thumbnail image for the video, with a click handler that calls "player".</li>
+            <li>player: function($maindiv, video, options) - creates the player, the default function creates an IFRAME as specified by YouTube embedding system, using properties found in options.playopts as options.</li>
+            <li>loaded: function(videos, options) - called after the list of videos is called, the carousel is created and the player for the first video is displayed. The default implementation does nothing.</li> 
+          </ul>
+        </p>
+        <div id="player">
+        </div>
+    </body>
+</html>
